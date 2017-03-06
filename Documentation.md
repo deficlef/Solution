@@ -1,8 +1,10 @@
 # Documentation
 
-Before running, please ensure you have JRE set up on your computer. If not, follow this link to [setup JRE](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB).
+Before running, please ensure you have Java JRE and JDK set up on your computer. If not, follow this link to
+[setup Java JRE](https://docs.oracle.com/goldengate/1212/gg-winux/GDRAD/java.htm#BGBFJHAB) and
+[setup Java JDK](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).
 
-### Run unit test
+### Run unit tests
 
 ##### On Mac
 
