@@ -8,22 +8,22 @@ public abstract class TaxiLicence {
     /**
      * Licence's annual fee
      */
-    protected double annualFee = 0;
+    double annualFee = 0;
 
     /**
      * Licence's application fee
      */
-    protected double applicationFee = 0;
+    double applicationFee = 0;
 
     /**
      * Licence's length
      */
-    protected int contractLength = 0;
+    int contractLength = 0;
 
     /**
      * Licence's discounts
      */
-    protected HashMap<Integer, Integer> discounts;
+    HashMap<Integer, Integer> discounts;
 
 
     /**
@@ -70,18 +70,6 @@ public abstract class TaxiLicence {
         return discounts;
     }
 
-    // Setters
-    public void setApplicationFee(Double af) {
-        applicationFee = af;
-    }
-
-    public void setAnnualFee(Double af) {
-        annualFee = af;
-    }
-
-    public void setDiscounts(HashMap<Integer, Integer> d) {
-        discounts = d;
-    }
 }
 
 

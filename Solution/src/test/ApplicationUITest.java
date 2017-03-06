@@ -1,6 +1,5 @@
 package test;
 
-import com.company.Application;
 import com.company.ApplicationUI;
 import com.company.Step;
 import com.company.licence.NewTaxiLicence;
@@ -15,7 +14,7 @@ import static junit.framework.TestCase.assertTrue;
 
 public class ApplicationUITest {
 
-    ApplicationUI applicationuUI;
+    private ApplicationUI applicationuUI;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
@@ -169,7 +168,6 @@ public class ApplicationUITest {
     public void testDisplayLicenceInfoDisplaysNoDiscountOnNonExistingDiscount() throws Exception {
         NewTaxiLicence tl = new NewTaxiLicence();
 
-        tl.setDiscounts(null);
         applicationuUI.displayLicenceInfo(tl);
         assertTrue(outContent.toString().contains("No available discount."));
     }

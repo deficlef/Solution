@@ -17,7 +17,6 @@ import static org.junit.Assert.assertEquals;
 public class ApplicationTest {
 
     private Application app;
-    private ApplicationUI applicationuUI;
     private ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
     @Before
@@ -28,9 +27,6 @@ public class ApplicationTest {
     public void setUp() {
         app = new Application(new ApplicationUI());
         System.setOut(new PrintStream(outContent));
-
-        applicationuUI = new ApplicationUI();
-
     }
 
     @Test
@@ -170,7 +166,7 @@ public class ApplicationTest {
     }
 
     @Test
-    public void testGetuserageDisplaysInvalidAgeOnInvalidString() {
+    public void testGetUserAgeDisplaysInvalidAgeOnInvalidString() {
         ByteArrayInputStream in = new ByteArrayInputStream("invalid string".getBytes());
         app.getUserAge(in);
 
@@ -178,7 +174,7 @@ public class ApplicationTest {
     }
 
     @Test
-    public void testGetuserageDisplaysInvalidAgeOnZeroString() {
+    public void testGetUserAgeDisplaysInvalidAgeOnZeroString() {
         ByteArrayInputStream in = new ByteArrayInputStream("0".getBytes());
         app.getUserAge(in);
 
@@ -186,7 +182,7 @@ public class ApplicationTest {
     }
 
     @Test
-    public void testGetuserageReturnsInputOnValidNumberString() {
+    public void testGetUserAgeReturnsInputOnValidNumberString() {
         int data = 10;
         ByteArrayInputStream in = new ByteArrayInputStream(String.valueOf(data).getBytes());
         int actual = app.getUserAge(in);

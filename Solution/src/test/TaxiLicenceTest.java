@@ -14,25 +14,8 @@ import static org.junit.Assert.assertEquals;
 public class TaxiLicenceTest {
 
     @Test
-    public void testGetContractLengthDiscountReturnsZeroOnNullDiscount() {
-        NewTaxiLicence tl = new NewTaxiLicence();
-        tl.setDiscounts(null);
-
-        int expected = 0;
-        int actual = tl.getContractLengthDiscount();
-
-        assertThat(actual, is(expected));
-    }
-
-    @Test
     public void testGetContractLengthDiscountReturnsZeroOnNonExistingDiscount() {
-        int contractLength = 3;
-        RenewalTaxiLicence tl = new RenewalTaxiLicence(contractLength);
-        HashMap<Integer, Integer> disc = tl.getDiscounts();
-
-        disc.remove(contractLength);
-        tl.setDiscounts(disc);
-
+        NewTaxiLicence tl = new NewTaxiLicence();
         int expected = 0;
         int actual = tl.getContractLengthDiscount();
 
@@ -40,23 +23,19 @@ public class TaxiLicenceTest {
     }
 
     @Test
-    public void testGetContractLengthDiscountReturnsDiscountOnExistingDiscount() {
+    public void testGetContractLengthDiscountReturnsRightValueOnExistingDiscount() {
         int contractLength = 2;
         RenewalTaxiLicence tl = new RenewalTaxiLicence(contractLength);
         HashMap<Integer, Integer> disc = tl.getDiscounts();
 
-        int val = 100;
-        disc.put(contractLength, val);
-
-        tl.setDiscounts(disc);
-
+        int expected = disc.get(contractLength);
         int actual = tl.getContractLengthDiscount();
 
-        assertEquals(actual, val);
+        assertEquals(actual, expected);
     }
 
     @Test
-    public void testGetTotalNetFeeReturnsRightCalculationForNewTaxiLicence() {
+    public void testGetTotalNetFeeReturnsCorrectCalculationForNewTaxiLicence() {
         NewTaxiLicence tl = new NewTaxiLicence();
         double expected = tl.getApplicationFee() + tl.getAnnualFee();
         double actual = tl.getTotalNetFee();
@@ -65,7 +44,7 @@ public class TaxiLicenceTest {
     }
 
     @Test
-    public void testGetTotalNetFeeReturnsRightCalculationForRenewalTaxiLicence() {
+    public void testGetTotalNetFeeReturnsCorrectCalculationForRenewalTaxiLicence() {
         RenewalTaxiLicence tl = new RenewalTaxiLicence(2);
         double expected =
                 tl.getApplicationFee() +

@@ -23,7 +23,6 @@ public class Application {
      */
     private static TaxiLicence taxiLicence;
 
-
     /**
      * ApplicationUI class
      */
@@ -111,22 +110,24 @@ public class Application {
      * @return String driving licence
      */
     public String getDrivingLicence(InputStream in) {
+        String input;
         Scanner keyboard = new Scanner(in);
 
-        ui.askUserForDrivingLicence();
+        do {
 
-        String input = keyboard.next();
-
-        while (input.length() < 16) {
-            ui.showInvalidError(DRIVING_LICENCE);
             ui.askUserForDrivingLicence();
 
-            if(keyboard.hasNext()) {
+            if (keyboard.hasNext()) {
                 input = keyboard.next();
             } else {
                 return null;
             }
-        }
+
+            if (input.length() < 16) {
+                ui.showInvalidError(DRIVING_LICENCE);
+            }
+
+        } while (input.length() < 16);
 
         return input;
     }
@@ -138,29 +139,31 @@ public class Application {
      * @return String licence type
      */
     public String getLicenceType(InputStream in) {
+        String input = null;
         boolean isExistng = false;
         Scanner keyboard = new Scanner(in);
 
-        ui.askUserForLicenceType();
+        do {
 
-        String input = keyboard.next().toLowerCase();
-
-        for (String licence : licenceTypes) {
-            if (input.toLowerCase().equals(licence)) {
-                isExistng = true;
-            }
-        }
-
-        while (!isExistng) {
-            ui.showInvalidError(TAXI_LICENCE);
             ui.askUserForLicenceType();
 
-            if(keyboard.hasNext()) {
-                input = keyboard.next();
+            if (keyboard.hasNext()) {
+                input = keyboard.next().toLowerCase();
             } else {
-                return null;
+                return input;
             }
-        }
+
+            for (String licence : licenceTypes) {
+                if (input.toLowerCase().equals(licence)) {
+                    isExistng = true;
+                }
+            }
+
+            if (!isExistng) {
+                ui.showInvalidError(TAXI_LICENCE);
+            }
+
+        } while (!isExistng);
 
         return input;
     }
@@ -168,18 +171,16 @@ public class Application {
 
     /**
      * For getting the user's age
+     *
      * @param in InputStream
      * @return Integer user age
      */
     public int getUserAge(InputStream in) {
         Scanner keyboard = new Scanner(in);
+        Integer input;
 
-        ui.askUserForAge();
+        do {
 
-        Integer input = getIntegerValue(keyboard.next());
-
-        while (input == 0) {
-            ui.showInvalidError(AGE);
             ui.askUserForAge();
 
             if (keyboard.hasNext()) {
@@ -187,7 +188,12 @@ public class Application {
             } else {
                 return 0;
             }
-        }
+
+            if (input == 0) {
+                ui.showInvalidError(AGE);
+            }
+
+        } while (input == 0);
 
         return input;
     }
@@ -200,18 +206,9 @@ public class Application {
      */
     public int getRenewalLength(InputStream in) {
         Scanner keyboard = new Scanner(in);
+        Integer input;
 
-        ui.askUserForRenewalLength();
-
-        Integer input = getIntegerValue(keyboard.next());
-
-        while (input == 0 || input > RenewalTaxiLicence.MAX_RENEWAL_LENGTH) {
-
-            if (input > 3) {
-                ui.showEligibilityMessage(RENEWAL_LENGTH);
-            } else {
-                ui.showInvalidError(RENEWAL_LENGTH);
-            }
+        do {
 
             ui.askUserForRenewalLength();
 
@@ -220,7 +217,14 @@ public class Application {
             } else {
                 return 0;
             }
-        }
+
+            if (input == 0) {
+                ui.showInvalidError(RENEWAL_LENGTH);
+            } else if (input > RenewalTaxiLicence.MAX_RENEWAL_LENGTH) {
+                ui.showEligibilityMessage(RENEWAL_LENGTH);
+            }
+
+        } while (input == 0 || input > RenewalTaxiLicence.MAX_RENEWAL_LENGTH);
 
         return input;
     }
@@ -232,22 +236,24 @@ public class Application {
      * @return boolean
      */
     public boolean isRetry(InputStream in) {
+        String input;
         Scanner keyboard = new Scanner(in);
 
-        ui.askUserToRetry();
+        do {
 
-        String input = keyboard.next().toLowerCase();
-
-        while (!input.equals("y") && !input.equals("n")) {
-            ui.showInvalidError(Step.RETRY);
             ui.askUserToRetry();
 
-            if(keyboard.hasNext()) {
-                input = keyboard.next();
+            if (keyboard.hasNext()) {
+                input = keyboard.next().toLowerCase();
             } else {
                 return false;
             }
-        }
+
+            if (!input.equals("y") && !input.equals("n")) {
+                ui.showInvalidError(Step.RETRY);
+            }
+
+        } while (!input.equals("y") && !input.equals("n"));
 
         return (input.equals("y"));
     }
