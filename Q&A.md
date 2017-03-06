@@ -35,26 +35,27 @@ API tests and GUI testing via Selenium e.t.c. all in one place.
 
 ##### How would you speed up the process of turning business ideas into features that customers can use?
 
-The business ideas would be divided into smaller stories
-that are clearly defined and focus on specific tasks. The stories would then be
+Business ideas would be divided into smaller stories
+that are clearly defined and focus on specific areas. The stories would then be
 developed in an AGILE method, enabling the delivery
 of individual stories that are fully tested and functional.
 This would allow customers to have working features that can be used,
 while the rest of the project is being developed.
-I would then iterate this process through all the stories until all features have been fully implemented.
+This process would be iterated on all the stories until all aspects of the business idea have been fully implemented.
 
 ##### How would you go about developing a new feature as part of an agile team?
 
-As a team, we would divide the feature into stories that focus on specific aspects of the feature.
+As a team, we would divide the feature into smaller stories that focus on specific aspects of the overall.
 We would then develop these stories across a number of sprints,
 using sprint plannings to decide what stories to work on and whether they are achievable in the sprint length.
 
-For each sprint, all selected stories would undergo the full software development life cycle, involving developing and testing via unit tests, acceptance tests,
-functional tests, and fixing any bugs we find along the way. We would also hold daily stand ups to catch up on previous day's work,
+For each sprint, all selected stories would undergo the full software development life cycle, which involves
+developing and testing via unit, acceptance and
+functional tests, fixing any bugs we find along the way. We would also hold daily stand ups to catch up on previous day's work,
 discuss issues being faced, and tasks for the current day.
 
-At the end of each sprint, we would be having well tested, fully developed stories that add to the overall feature.
-Any story that couldn't be completed would then be re-accessed in the next sprint planning.
+At the end of each sprint, we would be having fully developed, well tested stories that add to the overall feature.
+Stories that could not be completed would then be re-accessed in the next sprint planning.
 Retrospective meetings would be conducted to discuss how each sprint went, lessons learnt and areas of improvement going forward.
 
 We would keep iterating this process until we have developed all created stories for the feature.
